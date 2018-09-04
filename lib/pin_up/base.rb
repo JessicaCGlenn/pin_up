@@ -38,6 +38,10 @@ module Pin
     # args: method (Symbol), args (Hash)
     # eg. args => { url: 'cards', options: { ... } }
     def self.make_request(method, args)
+      auth = @@auth
+      if args[:key].present?
+        auth[:username] = args[:key]
+      end
       Pin::Client.new(method, args, @@base_url, @@auth, @@timeout).make_request
     end
 
