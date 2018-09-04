@@ -11,8 +11,8 @@ module Pin
     # and the pagination hash with [:pagination]
     #
     # https://pin.net.au/docs/api/customers#get-customers
-    def self.all(page = nil, pagination = false)
-      build_collection_response(make_request(:get, {url: "customers?page=#{page}" } ), pagination)
+    def self.all(page = nil, pagination = false, key = '')
+      build_collection_response(make_request(:get, {url: "customers?page=#{page}", key: key } ), pagination)
     end
 
     ##

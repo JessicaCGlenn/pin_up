@@ -11,8 +11,8 @@ module Pin
     # and the pagination hash with [:pagination]
     #
     # https://pin.net.au/docs/api/charges#get-charges
-    def self.all(page = nil, pagination = false)
-      build_collection_response(make_request(:get, { url: "charges?page=#{page}" }), pagination)
+    def self.all(page = nil, pagination = false, key = '')
+      build_collection_response(make_request(:get, { url: "charges?page=#{page}", key: key }), pagination)
     end
 
     ##
@@ -20,7 +20,7 @@ module Pin
     # args: token (String)
     # returns: a charge object
     # https://pin.net.au/docs/api/charges#get-charge
-    def self.find(token)
+    def self.find(token, key = '')
       build_response(make_request(:get, {url: "charges/#{token}" } ))
     end
 

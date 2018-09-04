@@ -7,8 +7,8 @@ module Pin
     # https://pin.net.au/docs/api/recipients#post-recipients
     # args: options (Hash)
     # returns: recipient (Hash)
-    def self.create(options)
-      build_response(make_request(:post, { url: 'recipients', options: options }))
+    def self.create(options, key = '')
+      build_response(make_request(:post, { url: 'recipients', options: options, key: key }))
     end
 
     ##
@@ -20,8 +20,8 @@ module Pin
     # and the pagination hash with [:pagination]
     #
     # https://pin.net.au/docs/api/recipients#get-recipients
-    def self.all(page = nil, pagination = false)
-      build_collection_response(make_request(:get, {url: "recipients?page=#{page}" } ), pagination)
+    def self.all(page = nil, pagination = false, key = '')
+      build_collection_response(make_request(:get, {url: "recipients?page=#{page}", key: key } ), pagination)
     end
 
     ##
